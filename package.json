@@ -1,0 +1,20 @@
+{
+  "name": "scookie",
+  "version": "0.0.1",
+  "description": "A secure cookie generator",
+  "main": "scookie.js",
+  "keywords": [
+    "cookie",
+    "request",
+    "secure"
+  ],
+  "author": "Martin Rue",
+  "license": "BSD",
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "jasmine-node": "~1.7.0"
+  },
+  "scripts": {
+    "test": "jasmine-node --verbose spec --config test true"
+  }
+}
