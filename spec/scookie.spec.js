@@ -107,6 +107,16 @@ describe('scookie', function() {
 
       expect(cookieObject).toBe(undefined);
     });
+
+    it('returns undefined when JSON is malformed', function() {
+      var cookie = { name: 'martin', number: 42 };
+      cookie.hash = scookie.getObjectHash(cookie);
+
+      var request = { cookies: { 'testcookie': JSON.stringify(cookie) + '...' } };
+      var cookieObject = scookie.getCookie(request);
+
+      expect(cookieObject).toBe(undefined);
+    });
   });
 
   describe('isLoggedIn', function() {

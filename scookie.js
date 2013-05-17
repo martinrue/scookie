@@ -6,9 +6,17 @@ var cookieSecret;
 var cookieAge = 1000 * 60 * 60 * 3;
 var unauthorisedUrl = '/';
 
+var parseJSON = function(data) {
+  try {
+    return data ? JSON.parse(data) : data;
+  } catch(e) {
+    return undefined;
+  }
+};
+
 var getLoginCookie = function(request) {
   var cookie = request.cookies[cookieName];
-  return cookie ? JSON.parse(cookie) : cookie;
+  return parseJSON(cookie);
 };
 
 var getObjectHash = function(object) {
