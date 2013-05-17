@@ -1,6 +1,6 @@
 {
   "name": "scookie",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A secure cookie generator",
   "main": "scookie.js",
   "keywords": [
