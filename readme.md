@@ -4,6 +4,12 @@ scookie helps you securely persist JSON data to HTTP cookies for user login
 
 ## Installation
 
+### npm
+```
+npm install scookie
+```
+
+### GitHub
 ```
 npm install https://github.com/martinrue/scookie/tarball/master
 ```
