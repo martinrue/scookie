@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "A secure cookie generator",
   "main": "scookie.js",
+  "repository": "https://github.com/martinrue/scookie",
   "keywords": [
     "cookie",
     "request",
