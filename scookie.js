@@ -6,6 +6,11 @@ var cookieSecret;
 var cookieAge = 1000 * 60 * 60 * 3;
 var unauthorisedUrl = '/';
 
+var hmac = function(data, key) {
+  var hmac = crypto.createHmac('sha256', new Buffer(key, 'utf8'));
+  return hmac.update(new Buffer(data, 'utf8')).digest('hex');
+};
+
 var parseJSON = function(data) {
   try {
     return data ? JSON.parse(data) : data;
@@ -20,11 +25,11 @@ var getLoginCookie = function(request) {
 };
 
 var getObjectHash = function(object) {
-  var objectHash = _.reduce(object, function(memo, value, key) {
+  var objectData = _.reduce(object, function(memo, value, key) {
     return key !== 'hash' ? memo + value : memo;
   }, '');
 
-  return crypto.createHash('sha256').update(objectHash + cookieSecret).digest('hex');
+  return hmac(objectData, cookieSecret);
 };
 
 var verifyCookieHash = function(cookie) {
@@ -74,6 +79,7 @@ if (process.env.test) {
   _.extend(module.exports, {
     getLoginCookie: getLoginCookie,
     getObjectHash: getObjectHash,
-    verifyCookieHash: verifyCookieHash
+    verifyCookieHash: verifyCookieHash,
+    hmac: hmac
   });
 }

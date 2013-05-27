@@ -12,7 +12,7 @@ describe('scookie', function() {
   describe('getObjectHash', function() {
     it('includes all values and the cookie secret', function() {
       var hash = scookie.getObjectHash({ name: 'martin', number: 42, test: true });
-      var expected = crypto.createHash('sha256').update('martin42truesecret').digest('hex');
+      var expected = scookie.hmac('martin42true', 'secret');
 
       expect(hash).toBe(expected);
     });
